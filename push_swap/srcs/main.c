@@ -13,10 +13,7 @@
 #include <push_swap.h>
 #include <stdio.h>
 
-static char **spliter(int arc, char **arv);
-static void handler(char **inputs);
-static void ft_exit();
-// static void inserter(char **inputs);
+static void inserter(char **inputs);
 
 int main(int arc, char **arv)
 {
@@ -30,89 +27,34 @@ int main(int arc, char **arv)
 	while (inputs[i])
 		printf("%s \n", inputs[i++]);
 	handler(inputs);
-	// inserter(inputs);
+	inserter(inputs);
 	ft_exit(3, inputs);
 }
 
-// -------------------------------------------------------------------------
-
-static char **spliter(int arc, char **arv)
+static void print(long *cont)
 {
-	char **tmp;
-	int i;
-
-	if (arc <= 1)
-		ft_exit(1, NULL);
-	else if (arc == 2)
-		tmp = ft_split(arv[1], ' ');
-	else
-	{
-		i = 0;
-		tmp = (char **)malloc(sizeof(char *) * arc);
-		if (!tmp)
-			ft_exit(1, NULL);
-		while (++i < arc)
-		{
-			tmp[i - 1] = ft_strdup(arv[i]);
-			if (!tmp[i - 1])
-				ft_exit(2, tmp);
-		}
-		tmp[i - 1] = NULL;
-	}
-	if (!tmp)
-		ft_exit(1, NULL);
-	return (tmp);
+	printf("%ld\n", *cont);
 }
-
-//-----------------------------------------------------------------------------
-
-static void handler(char **inputs)
+static void inserter(char **inputs)
 {
 	int i;
+	long *num;
+	t_dlist *stack;
+	t_dlist *item;
 
 	i = 0;
+	num = (long *)malloc(sizeof(long));
+	if (!num || !inputs)
+		ft_exit(1, NULL);
+	*num = ft_latoi(inputs[i++]);
+	stack = ft_dlstnew(num);
 	while (inputs[i])
 	{
-		if ((ft_is_numric(inputs[i])))
-			ft_exit(2, inputs);
+		num = (long *)malloc(sizeof(long));
+		*num = ft_latoi(inputs[i]);
+		item = ft_dlstnew(num);
+		ft_dlstadd_back(&stack, item);
 		i++;
 	}
-	if ((ft_is_in_bound(inputs)))
-		ft_exit(2, inputs);
-	if ((ft_is_uniquenum(inputs)))
-		ft_exit(2, inputs);
-}
-
-//-----------------------------------------------------------------------------
-
-/*static void inserter(char **inputs)
-{
-
-}*/
-
-//-----------------------------------------------------------------------------
-static void ft_exit(int flag, char **str)
-{
-	int i;
-
-	i = 0;
-	if (flag == 1)
-	{
-		ft_putstr_fd("Error\n", 1);
-		exit(1);
-	}
-	else
-	{
-		if (str)
-		{
-			while (str[i])
-				free(str[i++]);
-			free(str);
-		}
-		if (flag == 2)
-			ft_putstr_fd("Error\n", 1);
-		else
-			ft_putstr_fd("Done\n", 1);
-		exit(1);
-	}
+	ft_dlstiter(stack, print);
 }
