@@ -7,9 +7,9 @@
 typedef struct s_dlist
 {
 	long			*content;
-	struct s_dlist *next;
-}	t_dlist;
-
+	struct s_dlist	*next;
+	int				index;
+} t_dlist;
 
 void				ft_dlstadd_back(t_dlist **lst, t_dlist *new);
 void				ft_dlstadd_front(t_dlist **lst, t_dlist *new);
@@ -40,4 +40,9 @@ void				rotate_r(t_dlist **stackA, t_dlist **stackB);
 void				r_rotate_a(t_dlist **stackA);
 void				r_rotate_b(t_dlist **stackB);
 void				r_rotate_r(t_dlist **stackA, t_dlist **stackB);
+void				handle2(t_dlist **stack);
+void				handle3(t_dlist **stack_a);
+void				handle4(t_dlist **stack_a, t_dlist **stack_b);
+void				handle5(t_dlist **stack_a, t_dlist **stack_b);
+int					is_sorted(t_dlist *stack);
 #endif

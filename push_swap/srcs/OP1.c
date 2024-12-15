@@ -1,46 +1,58 @@
 #include <push_swap.h>
 
-void swap_a(t_dlist **stackA)
+void swap_a(t_dlist **stack_a)
 {
 	t_dlist *tmp;
 
-	tmp = (*stackA)->next;
-	(*stackA)->next = tmp->next;
-	tmp->next = *stackA;
-	*stackA = tmp;
+	if (ft_dlstsize(*stack_a) < 2)
+		return;
+	tmp = (*stack_a)->next;
+	(*stack_a)->next = tmp->next;
+	tmp->next = *stack_a;
+	*stack_a = tmp;
+	ft_putendl_fd("sa", 1);
 }
 
-void swap_b(t_dlist **stackB)
+void swap_b(t_dlist **stack_b)
 {
 	t_dlist *tmp;
 
-	tmp = (*stackB)->next;
-	(*stackB)->next = tmp->next;
-	tmp->next = *stackB;
-	*stackB = tmp;
+	if (ft_dlstsize(*stack_b) < 2)
+		return;
+	tmp = (*stack_b)->next;
+	(*stack_b)->next = tmp->next;
+	tmp->next = *stack_b;
+	*stack_b = tmp;
+	ft_putendl_fd("sb", 1);
 }
-void swap_s(t_dlist **stackA, t_dlist **stackB)
+void swap_s(t_dlist **stack_a, t_dlist **stack_b)
 {
-	swap_a(&(*stackA));
-	swap_b(&(*stackB));
+	swap_a(&(*stack_a));
+	swap_b(&(*stack_b));
 }
 
-void push_a(t_dlist **stackA, t_dlist **stackB)
-{
-	t_dlist *tmp;
-
-	tmp = (*stackB);
-	*stackB = (*stackB)->next;
-	tmp->next = *stackA;
-	*stackA = tmp;
-}
-
-void push_b(t_dlist **stackA, t_dlist **stackB)
+void push_a(t_dlist **stack_a, t_dlist **stack_b)
 {
 	t_dlist *tmp;
 
-	tmp = (*stackA);
-	*stackA = (*stackA)->next;
-	tmp->next = *stackB;
-	*stackB = tmp;
+	if (!(*stack_b))
+		return;
+	tmp = (*stack_b);
+	*stack_b = (*stack_b)->next;
+	tmp->next = *stack_a;
+	*stack_a = tmp;
+	ft_putendl_fd("pa", 1);
+}
+
+void push_b(t_dlist **stack_a, t_dlist **stack_b)
+{
+	t_dlist *tmp;
+
+	if (!(*stack_a))
+		return;
+	tmp = (*stack_a);
+	*stack_a = (*stack_a)->next;
+	tmp->next = *stack_b;
+	*stack_b = tmp;
+	ft_putendl_fd("pb", 1);
 }

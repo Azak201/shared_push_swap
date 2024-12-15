@@ -20,18 +20,21 @@ CFLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar crs $@ $^
+	@ar crs $@ $^
+	@echo "library built"
 
 obj/%.o : srcs/%.c
 	@mkdir -p obj
-	$(CC) $(CFLAGS) -I./include -c $< -o $@
+	@$(CC) $(CFLAGS) -I./include -c $< -o $@
 	
 clean :
-	rm -f $(OBJS) $(BONOBJ)
+	@rm -f $(OBJS) $(BONOBJ)
 	@rm -rf obj
+	@echo "libft Cleaned"
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "libft Fcleaned"
 re : fclean all
-
+	@echo "libft re"
 .PHONY: all clean fclean re bonus 
 

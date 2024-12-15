@@ -1,5 +1,4 @@
 #include <push_swap.h>
-#include <stdio.h>
 
 char **spliter(int arc, char **arv)
 {
@@ -67,16 +66,10 @@ void ft_exit(int flag, char **str)
 		}
 		if (flag == 2)
 			ft_putstr_fd("Error\n", 1);
-		else
-			ft_putstr_fd("Done\n", 1);
 		exit(1);
 	}
 }
 
-static void print(long *cont, int i)
-{
-	printf("%ld \t %d\n", *cont, i);
-}
 void inserter(char **inputs)
 {
 	int i;
@@ -98,7 +91,5 @@ void inserter(char **inputs)
 		ft_dlstadd_back(&stack, item);
 		i++;
 	}
-	ft_dlstiter(stack, print); //============>delete this line
-	// sorter2(stack);
-	ft_dlstclear(&stack, free);
+	sorter(stack);
 }
