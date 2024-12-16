@@ -1,7 +1,7 @@
 
 #include <push_swap.h>
 
-void	ft_dlstdelone(t_dlist *lst, void (*del)(void *))
+void	ft_dlstdelone(t_dlist *lst, void (*del)(int))
 {
 	if (!lst || !del)
 		return ;

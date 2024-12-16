@@ -1,8 +1,9 @@
+
 #include <push_swap.h>
 
-void swap_a(t_dlist **stack_a)
+void	swap_a(t_dlist **stack_a)
 {
-	t_dlist *tmp;
+	t_dlist	*tmp;
 
 	if (ft_dlstsize(*stack_a) < 2)
 		return;
@@ -13,9 +14,9 @@ void swap_a(t_dlist **stack_a)
 	ft_putendl_fd("sa", 1);
 }
 
-void swap_b(t_dlist **stack_b)
+void	swap_b(t_dlist **stack_b)
 {
-	t_dlist *tmp;
+	t_dlist	*tmp;
 
 	if (ft_dlstsize(*stack_b) < 2)
 		return;
@@ -25,15 +26,15 @@ void swap_b(t_dlist **stack_b)
 	*stack_b = tmp;
 	ft_putendl_fd("sb", 1);
 }
-void swap_s(t_dlist **stack_a, t_dlist **stack_b)
+void	swap_s(t_dlist **stack_a, t_dlist **stack_b)
 {
 	swap_a(&(*stack_a));
 	swap_b(&(*stack_b));
 }
 
-void push_a(t_dlist **stack_a, t_dlist **stack_b)
+void	push_a(t_dlist **stack_a, t_dlist **stack_b)
 {
-	t_dlist *tmp;
+	t_dlist	*tmp;
 
 	if (!(*stack_b))
 		return;
@@ -44,9 +45,9 @@ void push_a(t_dlist **stack_a, t_dlist **stack_b)
 	ft_putendl_fd("pa", 1);
 }
 
-void push_b(t_dlist **stack_a, t_dlist **stack_b)
+void	push_b(t_dlist **stack_a, t_dlist **stack_b)
 {
-	t_dlist *tmp;
+	t_dlist	*tmp;
 
 	if (!(*stack_a))
 		return;

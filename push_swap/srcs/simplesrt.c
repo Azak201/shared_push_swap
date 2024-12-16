@@ -1,3 +1,4 @@
+
 #include <push_swap.h>
 
 void handle2(t_dlist **stack)
@@ -12,15 +13,21 @@ void handle2(t_dlist **stack)
 void handle3(t_dlist **stack_a)
 {
 	int i;
+	int max;
 	t_dlist *tmp;
 
 	tmp = *stack_a;
 	i = 0;
-	while (tmp->index != 2)
+	max = tmp->index;
+	while (tmp)
 	{
-		i++;
+		if (max < tmp->index)
+			max = tmp->index;
 		tmp = tmp->next;
 	}
+	tmp = *stack_a;
+	while (tmp->index != max && ++i)
+		tmp = tmp->next;
 	if (i == 0)
 		rotate_a(&(*stack_a));
 	else if (i == 1)
@@ -55,14 +62,15 @@ void handle4(t_dlist **stack_a, t_dlist **stack_b)
 		push_b(&(*stack_a), &(*stack_b));
 	}
 	handle3(&(*stack_a));
+	push_a(&(*stack_a), &(*stack_b));
 }
 
 void handle5(t_dlist **stack_a, t_dlist **stack_b)
 {
-	while (!(((*stack_a)->index != 0) || ((*stack_a)->index != 4)))
+	while (((*stack_a)->index != 0) && ((*stack_a)->index != 4))
 		rotate_a(&(*stack_a));
 	push_b(&(*stack_a), &(*stack_b));
-	while (!(((*stack_a)->index != 0) || ((*stack_a)->index != 4)))
+	while ((((*stack_a)->index != 0) && ((*stack_a)->index != 4)))
 		rotate_a(&(*stack_a));
 	push_b(&(*stack_a), &(*stack_b));
 	handle3(&(*stack_a));
