@@ -76,7 +76,7 @@ void	ft_exit(int flag, char **str)
 int	inserter(char **inputs)
 {
 	int		i;
-	long	num;
+	int		num;
 	t_dlist	*stack;
 	t_dlist	*item;
 
