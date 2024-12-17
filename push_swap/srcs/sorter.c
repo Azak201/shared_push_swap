@@ -27,7 +27,6 @@ int sorter(t_dlist *stack_a)
 		handle5(&stack_a, &stack_b);
 	else
 		radix_sort(&stack_a, &stack_b, size);
-	ft_dlstclear(&stack_b, NULL);
 	ft_dlstclear(&stack_a, NULL);
 	return (0);
 }

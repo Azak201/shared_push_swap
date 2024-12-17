@@ -1,13 +1,14 @@
 
 #include <push_swap.h>
 
-void	ft_dlstdelone(t_dlist *lst, void (*del)(int))
+void ft_dlstdelone(t_dlist *lst, void (*del)(int))
 {
-	if (!lst || !del)
-		return ;
+	if (!lst)
+		return;
 	if (lst)
 	{
-		del (lst -> content);
-		free (lst);
+		if (del)
+			del(lst->content);
+		free(lst);
 	}
 }

@@ -94,11 +94,9 @@ int inserter(char **inputs)
 		if (!item)
 			return (clear(&stack));
 		ft_dlstadd_back(&stack, item);
-		free(item);
 		i++;
 	}
 	sorter(stack);
-	free(stack);
 	return (0);
 }
 

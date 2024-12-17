@@ -1,7 +1,7 @@
-SRCS= 	srcs/ft_dlstadd_back.c	 srcs/ft_dlstclear.c   srcs/ft_dlstiter.c   \
-		srcs/ft_dlstsize.c  srcs/main.c  srcs/op2.c srcs/ft_dlstadd_front.c  srcs/ft_dlstdelone.c\
-		srcs/ft_dlstlast.c  srcs/ft_dlstnew.c  srcs/listhandl.c	  srcs/op1.c srcs/op3.c srcs/sorter.c\
-		srcs/simplesrt.c 
+SRCS= 	srcs/ft_dlstadd_back.c srcs/ft_dlstdelone.c srcs/ft_dlstnew.c srcs/listhandl.c srcs/op1.c \
+		srcs/op3.c srcs/sorter.c srcs/ft_dlstclear.c srcs/ft_dlstlast.c srcs/ft_dlstsize.c  srcs/main.c \
+		srcs/op2.c  srcs/simplesrt.c
+
 		
 
 OBJ = $(SRCS:srcs/%.c=obj/%.o)
