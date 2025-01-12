@@ -34,6 +34,8 @@ void handler(char **inputs)
 	int i;
 
 	i = 0;
+	if(inputs[0]==NULL)
+		ft_exit(2,inputs);
 	while (inputs[i])
 	{
 		if ((ft_is_numric(inputs[i])))
