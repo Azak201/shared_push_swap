@@ -5,6 +5,10 @@ static void get_index(t_dlist **stack_a);
 static void radix_sort(t_dlist **stack_a, t_dlist **stack_b, int size);
 static int get_max_bit(int size);
 
+/*this funciton count the inputs and send the list to defferent sorting function depend on its size
+ if more than 5 inputs the list will be sent to radix sort otherwise it will sent to deferent funtion
+ after sorting it will free the linked list then return 0 to inserter then the inserter will return 0
+ which means that every thing goes well.*/
 int sorter(t_dlist *stack_a)
 {
 	t_dlist *stack_b;
@@ -31,6 +35,7 @@ int sorter(t_dlist *stack_a)
 	return (0);
 }
 
+/*هاد الي بيجيب الاندكس الي متوقع زي ما شرحت على الورق لانه راديكس بتتعاملش مع السالب*/
 static void get_index(t_dlist **stack_a)
 {
 	t_dlist *tmp;
@@ -52,7 +57,7 @@ static void get_index(t_dlist **stack_a)
 		hold = hold->next;
 	}
 }
-
+/*this is the radix sort funciton that use the bitwise operator to check on bits if it 0 or 1*/ 
 static void radix_sort(t_dlist **stack_a, t_dlist **stack_b, int size)
 {
 	int i;
@@ -78,7 +83,10 @@ static void radix_sort(t_dlist **stack_a, t_dlist **stack_b, int size)
 		i++;
 	}
 }
-
+/*هاد الفنكشن بيجيب اكبر اندكس عندي بالليست وبيعد الرقم تاعه كم بيت فيه 
+مثال الاندكس 5 بالباينري 101 يعني 3 بتات فيه وهيك
+اقرائي عن ال 
+bitwise operator (>>) */ 
 static int get_max_bit(int size)
 {
 	int i;
