@@ -1,6 +1,15 @@
 #include <push_swap.h>
 
 static int clear(t_dlist **stack);
+/*this function start with checking how many argc he have if it was 1 
+thats mean there is no argument passed to the program so it will exit 
+if 2 that mean the user send all the inputs in one string like ./push_swap "1 3 5 0 ..."
+if more than 2 that mean the user send the inputs seperated like ./push_swap 1 4 6 0.
+so if argc 2 we use ft_split to create the 2d array of inputs if it was more we will
+create the array manually .
+in case of manual creation the (argv[0]=./push_swap ) so we dont need it that why we do 
+tmp[i-1] = argv[i] and the i start from 1 so we can ignore the argv[0];
+*/
 char **spliter(int arc, char **arv)
 {
 	char **tmp;
@@ -29,6 +38,13 @@ char **spliter(int arc, char **arv)
 	return (tmp);
 }
 
+/*this function work as follow at first it will check if not null then 
+it will check the inputs if it was just number like this 83 2 ... 
+inputs like this will rejected 9878j7 8874fs ++7 ... all these will rejected
+then ft_is_in_bound will check that the numbers are with int_max and int_min reange
+then ft_is_uniqenum will check if the number is duplicat in the inputs or not
+those 3 functions you can find them in libft/srcs/ .
+*/
 void handler(char **inputs)
 {
 	int i;
@@ -48,6 +64,14 @@ void handler(char **inputs)
 		ft_exit(2, inputs);
 }
 
+/*this function have flages to do as follow 
+if flag = 0 means no argument passed to program so just exit without print message.
+if flag = 1 means there is error happened before create the 2d array so exit with 
+printing error message but there is nothing to free .
+if flag =2 mean free the passed array and print error message then exit .
+if flag =3 mean free the passed array and exit sucsessfully without error message
+"mean the program ended normally".
+*/
 void ft_exit(int flag, char **str)
 {
 	int i;
@@ -75,6 +99,10 @@ void ft_exit(int flag, char **str)
 	}
 }
 
+/*inserter will create linked list from the inputs of 2d array but sence they
+are sorted as string we use atol (same as atoi but return long insted of int)(you can use atoi its the same result)
+to convert them and connect them to each other if any error happen inserter will clear the created list then return 1
+otherwise the inserter will send the linked list to sorter function .*/
 int inserter(char **inputs)
 {
 	int i;
@@ -102,6 +130,7 @@ int inserter(char **inputs)
 	return (0);
 }
 
+/*just clearing the created linked list for saving lines*/
 static int clear(t_dlist **stack)
 {
 	ft_dlstclear(&(*stack), NULL);
